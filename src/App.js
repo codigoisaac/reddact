@@ -7,21 +7,28 @@ class App extends Component {
     posts: [],
     selectedListing: "Hot",
     listings: ["Hot", "New", "Top", "Rising"],
+    lastId: undefined,
   };
 
   componentDidMount() {
     this.fetch();
   }
 
-  fetch = () => {
+  fetch = (after = undefined) => {
     const { selectedListing } = this.state;
-
-    const url = `https://www.reddit.com/r/reactjs/${selectedListing.toLowerCase()}.json`;
+    let url = !after
+      ? `https://www.reddit.com/r/reactjs/${selectedListing.toLowerCase()}.json`
+      : `https://www.reddit.com/r/reactjs/${selectedListing.toLowerCase()}.json?after=${after}`;
 
     fetch(url)
       .then((result) => result.json())
-      .then((result) => this.setState({ posts: result.data.children }))
-      .then((error) => console.log(error));
+      .then((result) =>
+        this.setState({
+          posts: result.data.children,
+          lastId: result.data.after,
+        })
+      )
+      .catch((error) => console.log(error));
   };
 
   setListing = (newListing) => {
@@ -29,7 +36,7 @@ class App extends Component {
   };
 
   render() {
-    const { posts, listings, selectedListing } = this.state;
+    const { posts, listings, selectedListing, lastId } = this.state;
 
     const postList = posts.map((post, index) => {
       return (
@@ -46,6 +53,10 @@ class App extends Component {
         <h2>{selectedListing} Posts from r/ReactJS</h2>
 
         <ul>{postList}</ul>
+
+        {selectedListing !== "Rising" && (
+          <button onClick={() => this.fetch(lastId)}>Ver Mais</button>
+        )}
       </div>
     );
   }
