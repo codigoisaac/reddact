@@ -1,21 +1,23 @@
 import { Component } from "react";
-import Post from "./Post.js";
+import PostList from "./PostList.js";
 import Nav from "./Nav.js";
+import HeaderBanner from "./HeaderBanner.js";
 import "./index.css";
+import { PlusIcon } from "@heroicons/react/solid";
 
 class App extends Component {
   state = {
     posts: [],
     selectedListing: "Hot",
     listings: ["Hot", "New", "Top", "Rising"],
-    lastId: undefined,
+    after: undefined,
   };
 
   componentDidMount() {
-    this.fetch();
+    this.fetchPosts();
   }
 
-  fetch = (after = undefined) => {
+  fetchPosts = (after = undefined) => {
     const { selectedListing } = this.state;
     let url = !after
       ? `https://www.reddit.com/r/reactjs/${selectedListing.toLowerCase()}.json`
@@ -26,43 +28,69 @@ class App extends Component {
       .then((result) =>
         this.setState({
           posts: result.data.children,
-          lastId: result.data.after,
+          after: result.data.after,
         })
       )
       .catch((error) => console.log(error));
   };
 
   setListing = (newListing) => {
-    this.setState({ selectedListing: newListing }, () => this.fetch());
+    this.setState({ selectedListing: newListing }, () => this.fetchPosts());
   };
 
   render() {
-    const { posts, listings, selectedListing, lastId } = this.state;
-
-    const postList = posts.map((post, index) => {
-      return (
-        <li key={index}>
-          <Post data={post.data} />
-        </li>
-      );
-    });
+    const { posts, listings, selectedListing, after } = this.state;
 
     return (
       <div>
-        <Nav setListing={this.setListing} listings={listings} />
+        <HeaderBanner />
 
-        <h2 className="text-3xl font-bold underline">
-          {selectedListing} Posts from r/ReactJS
-        </h2>
+        <div className="mx-2">
+          <Nav setListing={this.setListing} listings={listings} />
 
-        <ul>{postList}</ul>
+          <Title selectedListing={selectedListing} />
 
-        {selectedListing !== "Rising" && (
-          <button onClick={() => this.fetch(lastId)}>Ver Mais</button>
-        )}
+          <PostList posts={posts} />
+
+          <LoadMore
+            selectedListing={selectedListing}
+            fetchPosts={this.fetchPosts}
+            after={after}
+          />
+        </div>
       </div>
     );
   }
 }
+
+// Title component
+const Title = (props) => {
+  const { selectedListing } = props;
+
+  return (
+    <h2 className="text-xl text-center font-bold mt-4">
+      {selectedListing} Posts from r/ReactJS
+    </h2>
+  );
+};
+
+// LoadMore button component
+const LoadMore = (props) => {
+  const { selectedListing, after, fetchPosts } = props;
+
+  return (
+    selectedListing !== "Rising" && (
+      <div className="flex justify-center py-3 mb-3">
+        <button
+          onClick={() => fetchPosts(after)}
+          className="_button bg-_purple w-full flex justify-center items-center"
+        >
+          <PlusIcon className="w-4 mr-2" />
+          Ver mais
+        </button>
+      </div>
+    )
+  );
+};
 
 export default App;
