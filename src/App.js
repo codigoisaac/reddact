@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import Post from "./Post.js";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    posts: [],
+  };
+
+  componentDidMount() {
+    const url = "https://www.reddit.com/r/reactjs/hot.json";
+
+    fetch(url)
+      .then((result) => result.json())
+      .then((result) => this.setState({ posts: result.data.children }));
+  }
+
+  render() {
+    const { posts } = this.state;
+
+    const items = posts.map((post, index) => {
+      return (
+        <li key={index}>
+          <Post data={post.data} />
+        </li>
+      );
+    });
+
+    return <ul>{items}</ul>;
+  }
 }
 
 export default App;
