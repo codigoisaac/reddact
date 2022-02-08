@@ -12,16 +12,14 @@ const Post = (props) => {
     dateDisplay = day + "/" + month + "/" + year + ", " + hours + ":" + mins;
 
   return (
-    <div>
-      <h3>{title}</h3>
+    <div className="my-16">
+      <h3 className="font-bold">{title}</h3>
 
       {/* todo: limit characters */}
       <p>{selftext}</p>
 
-      <br />
-
       {/* todo: time ago */}
-      <p>
+      <p className="mt-3">
         enviado em {dateDisplay} por {author}
       </p>
     </div>

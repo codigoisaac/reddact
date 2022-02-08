@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Post from "./Post.js";
 import Nav from "./Nav.js";
+import "./index.css";
 
 class App extends Component {
   state = {
@@ -50,7 +51,9 @@ class App extends Component {
       <div>
         <Nav setListing={this.setListing} listings={listings} />
 
-        <h2>{selectedListing} Posts from r/ReactJS</h2>
+        <h2 className="text-3xl font-bold underline">
+          {selectedListing} Posts from r/ReactJS
+        </h2>
 
         <ul>{postList}</ul>
 
