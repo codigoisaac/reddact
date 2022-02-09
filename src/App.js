@@ -45,8 +45,12 @@ class App extends Component {
       <div>
         <HeaderBanner />
 
-        <div className="mx-2 sm:mx-12 md:mx-32 lg:mx-48 xl:mx-80 2xl:mx-96 4k:mx-96 4k:text-[1.8rem]">
-          <Nav setListing={this.setListing} listings={listings} />
+        <div className="mx-2 sm:mx-12 md:mx-32 lg:mx-48 xl:mx-80 2xl:mx-96 3xl:mx-96 3xl:text-[1.8rem]">
+          <Nav
+            setListing={this.setListing}
+            listings={listings}
+            selectedListing={selectedListing}
+          />
 
           <Title selectedListing={selectedListing} />
 
@@ -68,7 +72,7 @@ const Title = (props) => {
   const { selectedListing } = props;
 
   return (
-    <h2 className="text-xl 4k:text-[2.5rem] text-center font-bold mt-4">
+    <h2 className="text-xl 3xl:text-[2.5rem] text-center font-bold mt-4 3xl:my-16">
       {selectedListing} Posts from r/ReactJS
     </h2>
   );
@@ -83,7 +87,7 @@ const LoadMore = (props) => {
       <div className="flex justify-center py-3 mb-3">
         <button
           onClick={() => fetchPosts(after)}
-          className="_button bg-_purple w-full flex justify-center items-center"
+          className="_button bg-_purple w-full flex justify-center items-center mx-0"
         >
           <PlusIcon className="w-4 mr-2" />
           Ver mais

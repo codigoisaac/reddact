@@ -46,9 +46,9 @@ const Post = (props) => {
         </div>
 
         <div>
-          <h3 className="font-bold ">{title}</h3>
+          <h3 className="font-bold sm:text-lg xl:text-xl">{title}</h3>
 
-          <p className="text-sm 4k:text-[1.5rem] text-_gray">
+          <p className="text-sm 3xl:text-[1.5rem] text-_gray">
             enviado à X horas por <span className="text-_purple">{author}</span>
           </p>
         </div>

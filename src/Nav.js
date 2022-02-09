@@ -1,12 +1,16 @@
 import React from "react";
 
 const Nav = (props) => {
-  const listingButtons = props.listings.map((listing, index) => {
+  const { listings, setListing, selectedListing } = props;
+
+  const listingButtons = listings.map((listing, index) => {
     return (
       <button
         key={index}
-        onClick={() => props.setListing(listing)}
-        className="_button bg-_gray hover:bg-_purple"
+        onClick={() => setListing(listing)}
+        className={`_button hover:bg-_yellow hover:text-black mx-2 basis-1/6 ${
+          selectedListing === listing ? "bg-_purple" : "bg-_gray"
+        }`}
       >
         {listing}
       </button>
