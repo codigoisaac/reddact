@@ -1,10 +1,14 @@
 import React from "react";
+import TimeAgo from "timeago-react";
+import * as timeago from "timeago.js";
+import pt_BR from "timeago.js/lib/lang/pt_BR";
+timeago.register("pt_BR", pt_BR);
 
 const PostList = (props) => {
   const { posts } = props;
 
   const postList = posts.map((post, index) => {
-    const { title, author, permalink } = post.data;
+    const { title, author, permalink, created_utc } = post.data;
     let imageUrl;
     let isDefaultImage;
 
@@ -16,6 +20,8 @@ const PostList = (props) => {
       isDefaultImage = true;
     }
 
+    const time = new Date(created_utc * 1000).getTime();
+
     return (
       <Post
         key={index}
@@ -23,6 +29,7 @@ const PostList = (props) => {
         author={author}
         image={imageUrl}
         defaultImg={isDefaultImage}
+        time={time}
         url={"https://reddit.com" + permalink}
       />
     );
@@ -32,7 +39,7 @@ const PostList = (props) => {
 };
 
 const Post = (props) => {
-  const { title, author, image, url, defaultImg } = props;
+  const { title, author, image, url, defaultImg, time } = props;
 
   return (
     <a href={url} target="_blank" rel="noreferrer">
@@ -41,6 +48,7 @@ const Post = (props) => {
           !defaultImg ? "flex-col sm:flex-row" : ""
         }`}
       >
+        {/* image */}
         <div
           className={`mr-5 ${
             defaultImg ? "max-w-[4rem] 3xl:max-w-[5rem]" : "mb-2 sm:mb-0"
@@ -49,13 +57,15 @@ const Post = (props) => {
           <img src={image} alt="Imagem do Post" />
         </div>
 
+        {/* text */}
         <div>
           <h3 className="font-bold sm:text-[1.1rem] 2xl:text-lg 3xl:text-2xl 3xl:mb-4">
             {title}
           </h3>
 
           <p className="text-sm 3xl:text-[1.4rem] text-_gray">
-            enviado à X horas por <span className="text-_purple">{author}</span>
+            enviado <TimeAgo datetime={time} locale="pt_BR" /> por{" "}
+            <span className="text-_purple">{author}</span>
           </p>
         </div>
       </div>
