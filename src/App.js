@@ -45,7 +45,7 @@ class App extends Component {
       <div>
         <HeaderBanner />
 
-        <div className="mx-2">
+        <div className="mx-2 sm:mx-12 md:mx-32 lg:mx-48 xl:mx-80 2xl:mx-96 4k:mx-96 4k:text-[1.8rem]">
           <Nav setListing={this.setListing} listings={listings} />
 
           <Title selectedListing={selectedListing} />
@@ -68,7 +68,7 @@ const Title = (props) => {
   const { selectedListing } = props;
 
   return (
-    <h2 className="text-xl text-center font-bold mt-4">
+    <h2 className="text-xl 4k:text-[2.5rem] text-center font-bold mt-4">
       {selectedListing} Posts from r/ReactJS
     </h2>
   );

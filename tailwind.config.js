@@ -11,6 +11,10 @@ module.exports = {
       fontFamily: {
         sans: ["Mulish"],
       },
+
+      screens: {
+        "4k": "2560px",
+      },
     },
   },
   plugins: [],
