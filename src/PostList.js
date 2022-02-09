@@ -41,14 +41,20 @@ const Post = (props) => {
           !defaultImg ? "flex-col sm:flex-row" : ""
         }`}
       >
-        <div className={`mr-5 ${defaultImg ? "max-w-[4rem]" : "mb-2 sm:mb-0"}`}>
+        <div
+          className={`mr-5 ${
+            defaultImg ? "max-w-[4rem] 3xl:max-w-[5rem]" : "mb-2 sm:mb-0"
+          }`}
+        >
           <img src={image} alt="Imagem do Post" />
         </div>
 
         <div>
-          <h3 className="font-bold sm:text-lg xl:text-xl">{title}</h3>
+          <h3 className="font-bold sm:text-[1.1rem] 2xl:text-lg 3xl:text-2xl 3xl:mb-4">
+            {title}
+          </h3>
 
-          <p className="text-sm 3xl:text-[1.5rem] text-_gray">
+          <p className="text-sm 3xl:text-[1.4rem] text-_gray">
             enviado à X horas por <span className="text-_purple">{author}</span>
           </p>
         </div>
