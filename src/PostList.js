@@ -42,34 +42,41 @@ const Post = (props) => {
   const { title, author, image, url, defaultImg, time } = props;
 
   return (
-    <a href={url} target="_blank" rel="noreferrer">
+    <div
+      className={`py-4 border-t border-_gray flex ${
+        !defaultImg ? "flex-col sm:flex-row" : ""
+      }`}
+    >
+      {/* image */}
       <div
-        className={`py-4 border-t border-_gray flex ${
-          !defaultImg ? "flex-col sm:flex-row" : ""
+        className={`mr-5 ${
+          defaultImg ? "max-w-[4rem] 3xl:max-w-[5rem]" : "mb-2 sm:mb-0"
         }`}
       >
-        {/* image */}
-        <div
-          className={`mr-5 ${
-            defaultImg ? "max-w-[4rem] 3xl:max-w-[5rem]" : "mb-2 sm:mb-0"
-          }`}
-        >
-          <img src={image} alt="Imagem do Post" />
-        </div>
+        <img src={image} alt="Imagem do Post" />
+      </div>
 
-        {/* text */}
-        <div>
+      {/* text */}
+      <div>
+        <a href={url} target="_blank" rel="noreferrer">
           <h3 className="font-bold sm:text-[1.1rem] 2xl:text-lg 3xl:text-2xl 3xl:mb-4">
             {title}
           </h3>
+        </a>
 
-          <p className="text-sm 3xl:text-[1.4rem] text-_gray">
-            enviado <TimeAgo datetime={time} locale="pt_BR" /> por{" "}
-            <span className="text-_purple">{author}</span>
-          </p>
-        </div>
+        <p className="text-sm 3xl:text-[1.4rem] text-_gray">
+          enviado <TimeAgo datetime={time} locale="pt_BR" /> por{" "}
+          <a
+            href={`http://reddit.com/user/${author}/`}
+            target="_blank"
+            rel="noreferrer"
+            className="text-_purple"
+          >
+            {author}
+          </a>
+        </p>
       </div>
-    </a>
+    </div>
   );
 };
 
