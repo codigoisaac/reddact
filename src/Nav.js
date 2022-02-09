@@ -8,7 +8,7 @@ const Nav = (props) => {
       <button
         key={index}
         onClick={() => setListing(listing)}
-        className={`_button hover:bg-_yellow hover:text-black mx-2 basis-1/6 ${
+        className={`_button mx-2 basis-1/6 ${
           selectedListing === listing ? "bg-_purple" : "bg-_gray"
         }`}
       >

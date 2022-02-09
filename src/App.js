@@ -31,6 +31,14 @@ class App extends Component {
           after: result.data.after,
         })
       )
+      .then(() =>
+        setTimeout(() => {
+          window.scroll({
+            top: 0,
+            behavior: "smooth",
+          });
+        }, 400)
+      )
       .catch((error) => console.log(error));
   };
 
