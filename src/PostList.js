@@ -43,15 +43,11 @@ const Post = (props) => {
 
   return (
     <div className="border-t border-_gray">
-      <div
-        className={`py-4 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900 flex ${
-          !defaultImg ? "" : ""
-        }`}
-      >
+      <div className="py-4 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900 flex items-center">
         {/* image */}
         <div
-          className={`mr-5 ${
-            defaultImg ? "max-w-[4rem] 3xl:max-w-[5rem]" : "mb-2 sm:mb-0"
+          className={`mr-3 mt-1 min-w-[5rem] max-w-[5rem] 3xl:w-[5rem] ${
+            !defaultImg ? "hover:scale-[2.5] origin-left transform-gpu" : ""
           }`}
         >
           <img src={image} alt="Imagem do Post" />
