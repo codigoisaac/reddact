@@ -45,7 +45,7 @@ const Post = (props) => {
     <div className="border-t border-_gray">
       <div
         className={`py-4 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900 flex ${
-          !defaultImg ? "flex-col sm:flex-row" : ""
+          !defaultImg ? "" : ""
         }`}
       >
         {/* image */}
