@@ -36,10 +36,7 @@ class App extends Component {
       )
       .then(() =>
         setTimeout(() => {
-          window.scroll({
-            top: 0,
-            behavior: "smooth",
-          });
+          window.scrollTo(0, 0);
         }, 400)
       )
       .catch((error) => console.log(error));
@@ -80,11 +77,11 @@ class App extends Component {
 
           <PostList posts={posts} />
 
-          <LoadMore
-            selectedListing={selectedListing}
-            fetchPosts={this.fetchPosts}
-            after={after}
-          />
+          {selectedListing !== "Rising" ? (
+            <LoadMore fetchPosts={this.fetchPosts} after={after} />
+          ) : (
+            <RisingNote />
+          )}
         </div>
       </div>
     );
@@ -117,20 +114,32 @@ const Title = (props) => {
 
 // LoadMore button component
 const LoadMore = (props) => {
-  const { selectedListing, after, fetchPosts } = props;
+  const { after, fetchPosts } = props;
 
   return (
-    selectedListing !== "Rising" && (
-      <div className="flex justify-center py-3">
-        <button
-          onClick={() => fetchPosts(after)}
-          className="_button bg-_purple w-full flex justify-center items-center mx-0 mb-5"
-        >
-          <PlusIcon className="w-4 mr-2" />
-          Ver mais
-        </button>
-      </div>
-    )
+    <div className="py-3">
+      <button
+        onClick={() => fetchPosts(after)}
+        className="_button w-full flex justify-center items-center mx-0 mb-5 bg-_purple hover:bg-_yellow hover:text-gray-900"
+      >
+        <PlusIcon className="w-4 mr-2" />
+        Ver mais
+      </button>
+    </div>
+  );
+};
+
+const RisingNote = () => {
+  return (
+    <div className="py-3 text-center text-gray-700 dark:text-gray-500 text-sm">
+      A listagem "Rising" tem por padrão apenas uma página.{" "}
+      <span
+        className="underline cursor-pointer text-_purple dark:text-purple-400 hover:text-purple-400 dark:hover:text-_purple"
+        onClick={() => window.scrollTo(0, 0)}
+      >
+        Voltar ao topo.
+      </span>
+    </div>
   );
 };
 
