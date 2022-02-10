@@ -11,6 +11,7 @@ class App extends Component {
     selectedListing: "Hot",
     listings: ["Hot", "New", "Top", "Rising"],
     after: undefined,
+    pageNumber: 0,
   };
 
   componentDidMount() {
@@ -18,7 +19,8 @@ class App extends Component {
   }
 
   fetchPosts = (after = undefined) => {
-    const { selectedListing } = this.state;
+    const { selectedListing, pageNumber } = this.state;
+
     let url = !after
       ? `https://www.reddit.com/r/reactjs/${selectedListing.toLowerCase()}.json`
       : `https://www.reddit.com/r/reactjs/${selectedListing.toLowerCase()}.json?after=${after}`;
@@ -29,6 +31,7 @@ class App extends Component {
         this.setState({
           posts: result.data.children,
           after: result.data.after,
+          pageNumber: pageNumber + 1,
         })
       )
       .then(() =>
@@ -43,11 +46,13 @@ class App extends Component {
   };
 
   setListing = (newListing) => {
-    this.setState({ selectedListing: newListing }, () => this.fetchPosts());
+    this.setState({ selectedListing: newListing, pageNumber: 0 }, () =>
+      this.fetchPosts()
+    );
   };
 
   render() {
-    const { posts, listings, selectedListing, after } = this.state;
+    const { posts, listings, selectedListing, after, pageNumber } = this.state;
 
     return (
       <div>
@@ -60,7 +65,7 @@ class App extends Component {
             selectedListing={selectedListing}
           />
 
-          <Title selectedListing={selectedListing} />
+          <Title selectedListing={selectedListing} pageNumber={pageNumber} />
 
           <PostList posts={posts} />
 
@@ -77,12 +82,25 @@ class App extends Component {
 
 // Title component
 const Title = (props) => {
-  const { selectedListing } = props;
+  const { selectedListing, pageNumber } = props;
+
+  let pageNumberDisplay;
+
+  if (pageNumber === 0) {
+    pageNumberDisplay = "carregando...";
+  } else {
+    pageNumberDisplay =
+      selectedListing === "Rising" ? "página única" : "página " + pageNumber;
+  }
 
   return (
-    <h2 className="text-xl 3xl:text-[2.5rem] text-center font-bold mt-4 3xl:my-16">
-      {selectedListing} Posts from r/ReactJS
-    </h2>
+    <div className="text-center">
+      <h2 className="text-xl 3xl:text-[2.5rem] font-bold mt-4 3xl:my-16">
+        {selectedListing} Posts from r/ReactJS
+      </h2>
+
+      <small>{pageNumberDisplay}</small>
+    </div>
   );
 };
 
