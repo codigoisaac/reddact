@@ -8,7 +8,7 @@ const PostList = (props) => {
   const { posts } = props;
 
   const postList = posts.map((post, index) => {
-    const { title, author, permalink, created_utc } = post.data;
+    const { permalink, created_utc } = post.data;
     let imageUrl;
     let isCustomImg;
 
@@ -25,12 +25,13 @@ const PostList = (props) => {
     return (
       <Post
         key={index}
-        title={title}
-        author={author}
+        title={post.data.title}
+        author={post.data.author}
         image={imageUrl}
         isCustomImg={isCustomImg}
         time={time}
         url={"https://reddit.com" + permalink}
+        isCollection={typeof post.data.collections !== "undefined"}
       />
     );
   });
@@ -39,14 +40,20 @@ const PostList = (props) => {
 };
 
 const Post = (props) => {
-  const { title, author, image, url, isCustomImg, time } = props;
+  const { title, author, image, url, isCustomImg, time, isCollection } = props;
 
   return (
     <div className="border-t border-_gray">
       <div className="py-4 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900 flex items-center">
         <PostImage img={image} isCustomImg={isCustomImg} />
 
-        <PostText url={url} title={title} author={author} time={time} />
+        <PostText
+          url={url}
+          title={title}
+          author={author}
+          time={time}
+          isCollection={isCollection}
+        />
       </div>
     </div>
   );
@@ -72,6 +79,12 @@ const PostImage = (props) => {
 const PostText = (props) => {
   return (
     <div>
+      {props.isCollection && (
+        <div className="bg-gray-600 py-1 px-2 rounded-full text-[.68rem] mb-2 w-fit">
+          collection
+        </div>
+      )}
+
       <a href={props.url} target="_blank" rel="noreferrer">
         <h3 className="font-bold sm:text-[1.1rem] 2xl:text-lg 3xl:text-2xl 3xl:mb-4 hover:underline">
           {props.title}
