@@ -51,6 +51,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [x] Dark/Light mode.
 - [x] Projeto rodando no [Netlify](https://netlify.com) com deploy automático (https://redd-act.netlify.app/) [![Netlify Status](https://api.netlify.com/api/v1/badges/3a34b761-eb9c-4abc-aab6-3740bf78aecd/deploy-status)](https://app.netlify.com/sites/redd-act/deploys).
 - [x] Mostrar a devida badge em posts que são uma coleção ou que foram fixados.
+- [x] Mostrar número de upvotes e de comentários no post.
 - [ ] Testes unitários.
 - [ ] Testes e2e.
 - [ ] Documentação.

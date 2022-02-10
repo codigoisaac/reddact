@@ -33,6 +33,8 @@ const PostList = (props) => {
         url={"https://reddit.com" + permalink}
         isCollection={typeof post.data.collections !== "undefined"}
         isFixed={post.data.stickied}
+        comments={post.data.num_comments}
+        ups={post.data.ups - 1}
       />
     );
   });
@@ -41,29 +43,20 @@ const PostList = (props) => {
 };
 
 const Post = (props) => {
-  const {
-    title,
-    author,
-    image,
-    url,
-    isCustomImg,
-    time,
-    isCollection,
-    isFixed,
-  } = props;
-
   return (
     <div className="border-t border-_gray">
       <div className="py-4 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900 flex items-center sm:px-5">
-        <PostImage img={image} isCustomImg={isCustomImg} />
+        <PostImage img={props.image} isCustomImg={props.isCustomImg} />
 
         <PostText
-          url={url}
-          title={title}
-          author={author}
-          time={time}
-          isCollection={isCollection}
-          isFixed={isFixed}
+          url={props.url}
+          title={props.title}
+          author={props.author}
+          time={props.time}
+          isCollection={props.isCollection}
+          isFixed={props.isFixed}
+          comments={props.comments}
+          ups={props.ups}
         />
       </div>
     </div>
@@ -90,8 +83,8 @@ const PostImage = (props) => {
 const PostText = (props) => {
   return (
     <div>
-      {props.isCollection && <div className="_postBadge">collection</div>}
-      {props.isFixed && <div className="_postBadge">fixed</div>}
+      {props.isCollection && <PostBadge title="coleção" />}
+      {props.isFixed && <PostBadge title="fixado" />}
 
       <a href={props.url} target="_blank" rel="noreferrer">
         <h3 className="font-bold sm:text-[1.1rem] 2xl:text-lg 3xl:text-2xl 3xl:mb-4 hover:underline">
@@ -110,6 +103,33 @@ const PostText = (props) => {
           {props.author}
         </a>
       </p>
+
+      <PostStats comments={props.comments} ups={props.ups} />
+    </div>
+  );
+};
+
+const PostBadge = (props) => {
+  return (
+    <div className="bg-gray-600 py-1 px-2 rounded-full text-[.68rem] mr-2 mb-1 inline-block">
+      {props.title}
+    </div>
+  );
+};
+
+const PostStats = (props) => {
+  return (
+    <div className="mt-[.2rem] text-xs">
+      <Stat title="ups" score={props.ups} />
+      <Stat title="comentários" score={props.comments} />
+    </div>
+  );
+};
+
+const Stat = (props) => {
+  return (
+    <div className="inline-block mr-3 text-slate-500">
+      {props.title}: {props.score}
     </div>
   );
 };
