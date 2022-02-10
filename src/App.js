@@ -62,10 +62,10 @@ class App extends Component {
     const { posts, listings, selectedListing, after, pageNumber } = this.state;
 
     return (
-      <div className="dark:bg-neutral-900 dark:text-white">
+      <div className="dark:bg-neutral-900 dark:text-white min-h-screen">
         <HeaderBanner />
 
-        <div className="mx-2 sm:mx-12 md:mx-32 lg:mx-48 xl:mx-80 2xl:mx-96 3xl:mx-96 3xl:text-[1.8rem]">
+        <div className="mx-2 sm:mx-12 md:mx-32 lg:mx-48 xl:mx-80 2xl:mx-96 3xl:mx-96 3xl:text-[1.8rem]" id="innerDiv">
           <Nav
             setListing={this.setListing}
             listings={listings}
