@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
 import pt_BR from "timeago.js/lib/lang/pt_BR";
@@ -10,14 +10,14 @@ const PostList = (props) => {
   const postList = posts.map((post, index) => {
     const { title, author, permalink, created_utc } = post.data;
     let imageUrl;
-    let isDefaultImage;
+    let isCustomImg;
 
     if (!["self", "default"].includes(post.data.thumbnail)) {
       imageUrl = post.data.thumbnail;
-      isDefaultImage = false;
+      isCustomImg = true;
     } else {
       imageUrl = "/defaultPostImg.png";
-      isDefaultImage = true;
+      isCustomImg = false;
     }
 
     const time = new Date(created_utc * 1000).getTime();
@@ -28,7 +28,7 @@ const PostList = (props) => {
         title={title}
         author={author}
         image={imageUrl}
-        defaultImg={isDefaultImage}
+        isCustomImg={isCustomImg}
         time={time}
         url={"https://reddit.com" + permalink}
       />
@@ -39,41 +39,56 @@ const PostList = (props) => {
 };
 
 const Post = (props) => {
-  const { title, author, image, url, defaultImg, time } = props;
+  const { title, author, image, url, isCustomImg, time } = props;
 
   return (
     <div className="border-t border-_gray">
       <div className="py-4 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900 flex items-center">
-        {/* image */}
-        <div
-          className={`mr-3 mt-1 min-w-[5rem] max-w-[5rem] 3xl:w-[5rem] ${
-            !defaultImg ? "hover:scale-[2.5] origin-left transform-gpu" : ""
-          }`}
-        >
-          <img src={image} alt="Imagem do Post" />
-        </div>
+        <PostImage img={image} isCustomImg={isCustomImg} />
 
-        {/* text */}
-        <div>
-          <a href={url} target="_blank" rel="noreferrer">
-            <h3 className="font-bold sm:text-[1.1rem] 2xl:text-lg 3xl:text-2xl 3xl:mb-4 hover:underline">
-              {title}
-            </h3>
-          </a>
-
-          <p className="text-sm 3xl:text-[1.4rem] text-_gray">
-            enviado <TimeAgo datetime={time} locale="pt_BR" /> por{" "}
-            <a
-              href={`http://reddit.com/user/${author}/`}
-              target="_blank"
-              rel="noreferrer"
-              className="text-_purple dark:text-purple-400 hover:underline"
-            >
-              {author}
-            </a>
-          </p>
-        </div>
+        <PostText url={url} title={title} author={author} time={time} />
       </div>
+    </div>
+  );
+};
+
+const PostImage = (props) => {
+  const [isScaled, setIsScaled] = useState(false);
+
+  return (
+    <div
+      onClick={() => setIsScaled(!isScaled)}
+      className={`mr-3 mt-1 min-w-[5rem] max-w-[5rem] 3xl:w-[5rem] ${
+        isScaled && props.isCustomImg
+          ? "scale-[2.5] origin-left transform-gpu"
+          : ""
+      }`}
+    >
+      <img src={props.img} alt="Imagem do Post" />
+    </div>
+  );
+};
+
+const PostText = (props) => {
+  return (
+    <div>
+      <a href={props.url} target="_blank" rel="noreferrer">
+        <h3 className="font-bold sm:text-[1.1rem] 2xl:text-lg 3xl:text-2xl 3xl:mb-4 hover:underline">
+          {props.title}
+        </h3>
+      </a>
+
+      <p className="text-sm 3xl:text-[1.4rem] text-_gray">
+        enviado <TimeAgo datetime={props.time} locale="pt_BR" /> por{" "}
+        <a
+          href={`http://reddit.com/user/${props.author}/`}
+          target="_blank"
+          rel="noreferrer"
+          className="text-_purple dark:text-purple-400 hover:underline"
+        >
+          {props.author}
+        </a>
+      </p>
     </div>
   );
 };
