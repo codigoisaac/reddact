@@ -65,7 +65,10 @@ class App extends Component {
       <div className="dark:bg-neutral-900 dark:text-white min-h-screen">
         <HeaderBanner />
 
-        <div className="mx-2 sm:mx-12 md:mx-32 lg:mx-48 xl:mx-80 2xl:mx-96 3xl:mx-96 3xl:text-[1.8rem]" id="innerDiv">
+        <div
+          className="mx-2 sm:mx-12 md:mx-32 lg:mx-48 xl:mx-80 2xl:mx-96 3xl:mx-96 3xl:text-[1.8rem]"
+          id="innerDiv"
+        >
           <Nav
             setListing={this.setListing}
             listings={listings}
@@ -103,8 +106,14 @@ const Title = (props) => {
 
   return (
     <div className="text-center">
-      <h2 className="text-xl 3xl:text-[2.5rem] font-bold mt-4 3xl:my-16">
-        {selectedListing} Posts from r/ReactJS
+      <h2 className="text-xl 3xl:text-[2.5rem] font-bold mt-4 3xl:my-16 w-fit mx-auto hover:underline">
+        <a
+          href={`https://reddit.com/r/reactjs/${selectedListing.toLowerCase()}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {selectedListing} Posts from r/ReactJS
+        </a>
       </h2>
 
       <small>{pageNumberDisplay}</small>

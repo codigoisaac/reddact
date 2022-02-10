@@ -62,7 +62,7 @@ const PostImage = (props) => {
         isScaled && props.isCustomImg
           ? "scale-[2.5] origin-left transform-gpu"
           : ""
-      } ${props.isCustomImg ? 'cursor-pointer' : ''}`}
+      } ${props.isCustomImg ? "cursor-pointer" : ""}`}
     >
       <img src={props.img} alt="Imagem do Post" />
     </div>
