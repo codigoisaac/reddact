@@ -92,7 +92,7 @@ const PostText = (props) => {
         </h3>
       </a>
 
-      <p className="text-sm 3xl:text-[1.4rem] text-_gray">
+      <p className="text-sm 3xl:text-[1.4rem] text-gray-600 dark:text-gray-500">
         enviado <TimeAgo datetime={props.time} locale="pt_BR" /> por{" "}
         <a
           href={`http://reddit.com/user/${props.author}/`}
@@ -111,7 +111,7 @@ const PostText = (props) => {
 
 const PostBadge = (props) => {
   return (
-    <div className="bg-gray-600 py-1 px-2 rounded-full text-[.68rem] mr-2 mb-1 inline-block">
+    <div className="bg-gray-600 py-1 px-2 rounded-full text-[.68rem] mr-2 mb-1 inline-block text-slate-100">
       {props.title}
     </div>
   );
@@ -128,7 +128,7 @@ const PostStats = (props) => {
 
 const Stat = (props) => {
   return (
-    <div className="inline-block mr-3 text-slate-500">
+    <div className="inline-block mr-3 text-gray-600 dark:text-gray-500">
       {props.title}: {props.score}
     </div>
   );
