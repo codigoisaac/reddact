@@ -42,39 +42,41 @@ const Post = (props) => {
   const { title, author, image, url, defaultImg, time } = props;
 
   return (
-    <div
-      className={`py-4 border-t border-_gray flex ${
-        !defaultImg ? "flex-col sm:flex-row" : ""
-      }`}
-    >
-      {/* image */}
+    <div className="border-t border-_gray">
       <div
-        className={`mr-5 ${
-          defaultImg ? "max-w-[4rem] 3xl:max-w-[5rem]" : "mb-2 sm:mb-0"
+        className={`py-4 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900 flex ${
+          !defaultImg ? "flex-col sm:flex-row" : ""
         }`}
       >
-        <img src={image} alt="Imagem do Post" />
-      </div>
+        {/* image */}
+        <div
+          className={`mr-5 ${
+            defaultImg ? "max-w-[4rem] 3xl:max-w-[5rem]" : "mb-2 sm:mb-0"
+          }`}
+        >
+          <img src={image} alt="Imagem do Post" />
+        </div>
 
-      {/* text */}
-      <div>
-        <a href={url} target="_blank" rel="noreferrer">
-          <h3 className="font-bold sm:text-[1.1rem] 2xl:text-lg 3xl:text-2xl 3xl:mb-4">
-            {title}
-          </h3>
-        </a>
-
-        <p className="text-sm 3xl:text-[1.4rem] text-_gray">
-          enviado <TimeAgo datetime={time} locale="pt_BR" /> por{" "}
-          <a
-            href={`http://reddit.com/user/${author}/`}
-            target="_blank"
-            rel="noreferrer"
-            className="text-_purple dark:text-purple-400"
-          >
-            {author}
+        {/* text */}
+        <div>
+          <a href={url} target="_blank" rel="noreferrer">
+            <h3 className="font-bold sm:text-[1.1rem] 2xl:text-lg 3xl:text-2xl 3xl:mb-4 hover:underline">
+              {title}
+            </h3>
           </a>
-        </p>
+
+          <p className="text-sm 3xl:text-[1.4rem] text-_gray">
+            enviado <TimeAgo datetime={time} locale="pt_BR" /> por{" "}
+            <a
+              href={`http://reddit.com/user/${author}/`}
+              target="_blank"
+              rel="noreferrer"
+              className="text-_purple dark:text-purple-400 hover:underline"
+            >
+              {author}
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );
