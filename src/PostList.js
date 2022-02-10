@@ -70,7 +70,7 @@ const Post = (props) => {
             href={`http://reddit.com/user/${author}/`}
             target="_blank"
             rel="noreferrer"
-            className="text-_purple"
+            className="text-_purple dark:text-purple-400"
           >
             {author}
           </a>

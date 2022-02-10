@@ -51,11 +51,21 @@ class App extends Component {
     );
   };
 
+  changeTheme = () => {
+    if (document.documentElement.classList.contains("dark")) {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = "light";
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
+    }
+  };
+
   render() {
     const { posts, listings, selectedListing, after, pageNumber } = this.state;
 
     return (
-      <div>
+      <div className="bg-white dark:bg-neutral-900 dark:text-white">
         <HeaderBanner />
 
         <div className="mx-2 sm:mx-12 md:mx-32 lg:mx-48 xl:mx-80 2xl:mx-96 3xl:mx-96 3xl:text-[1.8rem]">
@@ -63,6 +73,7 @@ class App extends Component {
             setListing={this.setListing}
             listings={listings}
             selectedListing={selectedListing}
+            changeTheme={this.changeTheme}
           />
 
           <Title selectedListing={selectedListing} pageNumber={pageNumber} />
