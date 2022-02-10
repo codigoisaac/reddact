@@ -1,70 +1,121 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p  align="center">
+<img  src="https://styles.redditmedia.com/t5_2zldd/styles/communityIcon_fbblpo38vy941.png?width=256&s=13a87a036836ce95570a76feb53f27e61717ad1b" width="80"  alt="r/ReactJS icon"  />
+</p>
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+# Reddact
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Reddact é um simples aplicativo web que lê a Api do [Reddit](https://reddit.com), e exibe dados do sub-reddit [r/ReactJS](https://reddit.com/r/ReactJS), um forum online sobre a biblioteca de desenvolvimento front-end [ReactJS](https://reactjs.org).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  
 
-### `npm test`
+## Visite o app online
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Acesse Reddact em: https://redd-act.netlify.app/ 
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Status do Projeto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h4 align="center"> 🚧 Em construção... 🚧 </h4>
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Tabela de conteúdos
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<p align="center">  
+  • 
+	<a href="#tecnologias">Tecnologias</a> 
+  • 
+	<a href="#funcionalidades">Funcionalidades</a> 
+  • 
+	<a href="#executar-a-aplicação">Executar a aplicação</a> 
+  • 
+	<a href="#licença">Licença</a> 
+  • 
+  <a href="#autor">Autor</a> 
+  •
+  <a href="#contribuindo">Contribuindo</a> 
+  •
+</p>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Tecnologias
+As seguintes ferramentas foram usadas na construção do projeto: 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [React](https://pt-br.reactjs.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [TimeAgo](https://timeago.org/)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Funcionalidades
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [x] Botões para navegar entre os tipos de listagem de posts: Hot, New, Top e Rising.
+- [x] Botão "Ver mais" para carregar uma nova página de posts.
+- [x] Mostrar há quanto tempo atrás o post foi feito e o usuário que o fez, com link para o post e para o perfil do usuário.
+- [x] Mostrar a imagem do post se ele tiver uma, ou uma imagem padrão caso contrário.
+- [x] Se o post tiver uma imagem, aumentar o tamanho da mesma ao clicar nela e voltá-la ao normal ao clicar de novo.
+- [x] Mostrar o número da página.
+- [x] Dark/Light mode.
+- [x] Projeto rodando no [Netlify](https://netlify.com) com deploy automático (https://redd-act.netlify.app/) [![Netlify Status](https://api.netlify.com/api/v1/badges/3a34b761-eb9c-4abc-aab6-3740bf78aecd/deploy-status)](https://app.netlify.com/sites/redd-act/deploys).
+- [ ] Testes unitários.
+- [ ] Testes e2e.
+- [ ] Documentação.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Executar a aplicação
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Pré-requisitos
 
-### Deployment
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- [Git](https://git-scm.com) 
+- [Node.js](https://nodejs.org/en/)
 
-### `npm run build` fails to minify
+Além disto é bom ter um editor decente para trabalhar com o código. Eu recomendo [VSCode](https://code.visualstudio.com/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+E um pequeno adendo: se você está usando o Google Chrome, talvez você precise ativar o modo de rolagem suave (visitando chrome://flags/#smooth-scrolling) para uma melhor experiência no app.
+
+
+### Executando a aplicação em modo de desenvolvimento
+
+Para executar a aplicação em sua máquina, siga os seguintes passos:
+
+```bash
+# Clone este repositório
+$ git clone <https://github.com/codigoisaac/reddact>
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd reddact
+
+# Instale as dependências
+$ npm install
+
+# Execute a aplicação em modo de desenvolvimento
+$ npm start
+
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+```
+
+
+
+## Licença
+
+[The Unlicense](https://choosealicense.com/licenses/unlicense/)
+
+
+
+## Autor
+
+[Isaac Muniz](https://campsite.bio/codigoisaac) 
+
+## Contribuindo 
+
+Pull requests são bem vindos. ;)
+Para grandes alterações por favor abra um _issue_ antes para discutirmos o que você quer fazer.
+Se você contribuir para esse projeto, seu perfil vai ser mostrado aqui.
