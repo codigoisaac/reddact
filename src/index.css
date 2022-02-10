@@ -15,3 +15,7 @@
 ._button {
   @apply px-3 py-2 rounded-md text-white font-semibold;
 }
+
+._postBadge {
+  @apply bg-gray-600 py-1 px-2 rounded-full text-[.68rem] mr-2 mb-1 inline-block;
+}

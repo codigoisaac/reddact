@@ -32,6 +32,7 @@ const PostList = (props) => {
         time={time}
         url={"https://reddit.com" + permalink}
         isCollection={typeof post.data.collections !== "undefined"}
+        isFixed={post.data.stickied}
       />
     );
   });
@@ -40,11 +41,20 @@ const PostList = (props) => {
 };
 
 const Post = (props) => {
-  const { title, author, image, url, isCustomImg, time, isCollection } = props;
+  const {
+    title,
+    author,
+    image,
+    url,
+    isCustomImg,
+    time,
+    isCollection,
+    isFixed,
+  } = props;
 
   return (
     <div className="border-t border-_gray">
-      <div className="py-4 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900 flex items-center">
+      <div className="py-4 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900 flex items-center sm:px-5">
         <PostImage img={image} isCustomImg={isCustomImg} />
 
         <PostText
@@ -53,6 +63,7 @@ const Post = (props) => {
           author={author}
           time={time}
           isCollection={isCollection}
+          isFixed={isFixed}
         />
       </div>
     </div>
@@ -79,11 +90,8 @@ const PostImage = (props) => {
 const PostText = (props) => {
   return (
     <div>
-      {props.isCollection && (
-        <div className="bg-gray-600 py-1 px-2 rounded-full text-[.68rem] mb-2 w-fit">
-          collection
-        </div>
-      )}
+      {props.isCollection && <div className="_postBadge">collection</div>}
+      {props.isFixed && <div className="_postBadge">fixed</div>}
 
       <a href={props.url} target="_blank" rel="noreferrer">
         <h3 className="font-bold sm:text-[1.1rem] 2xl:text-lg 3xl:text-2xl 3xl:mb-4 hover:underline">
