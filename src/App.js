@@ -65,7 +65,7 @@ class App extends Component {
     const { posts, listings, selectedListing, after, pageNumber } = this.state;
 
     return (
-      <div className="bg-white dark:bg-neutral-900 dark:text-white">
+      <div className="dark:bg-neutral-900 dark:text-white">
         <HeaderBanner />
 
         <div className="mx-2 sm:mx-12 md:mx-32 lg:mx-48 xl:mx-80 2xl:mx-96 3xl:mx-96 3xl:text-[1.8rem]">
@@ -121,10 +121,10 @@ const LoadMore = (props) => {
 
   return (
     selectedListing !== "Rising" && (
-      <div className="flex justify-center py-3 mb-3">
+      <div className="flex justify-center py-3">
         <button
           onClick={() => fetchPosts(after)}
-          className="_button bg-_purple w-full flex justify-center items-center mx-0"
+          className="_button bg-_purple w-full flex justify-center items-center mx-0 mb-5"
         >
           <PlusIcon className="w-4 mr-2" />
           Ver mais
