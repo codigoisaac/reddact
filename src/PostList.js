@@ -89,7 +89,7 @@ const PostImage = (props) => {
 
 const PostText = (props) => {
   return (
-    <div style={{ hyphens: "auto", "word-break": "break-word" }}>
+    <div style={{ hyphens: "auto", wordBreak: "break-word" }}>
       {props.isCollection && <PostBadge title="coleção" />}
       {props.isFixed && <PostBadge title="fixado" />}
 
