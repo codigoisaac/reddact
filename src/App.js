@@ -80,10 +80,10 @@ class App extends Component {
 
           <PostList posts={posts} />
 
-          {selectedListing !== "Rising" ? (
+          {after ? (
             <LoadMore fetchPosts={this.fetchPosts} after={after} />
           ) : (
-            <RisingNote />
+            <NoMorePostsNote />
           )}
         </div>
       </div>
@@ -138,10 +138,10 @@ const LoadMore = (props) => {
   );
 };
 
-const RisingNote = () => {
+const NoMorePostsNote = () => {
   return (
     <div className="py-3 text-center text-gray-700 dark:text-gray-500 text-sm">
-      A listagem "Rising" tem por padrão apenas uma página.{" "}
+      Não há mais posts para mostrar.{" "}
       <span
         className="underline cursor-pointer text-_purple dark:text-purple-400 hover:text-purple-400 dark:hover:text-_purple"
         onClick={() => window.scrollTo(0, 0)}
