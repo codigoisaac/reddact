@@ -4,6 +4,7 @@ import { MoonIcon } from "@heroicons/react/outline";
 const Nav = (props) => {
   const { listings, setListing, selectedListing, changeTheme } = props;
 
+  // loop through listings and return a button for each one
   const listingButtons = listings.map((listing, index) => {
     return (
       <button
