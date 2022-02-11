@@ -12,11 +12,11 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.fetchPosts();
+    this.fetchData();
   }
 
-  fetchPosts = (after = undefined) => {
-    const { selectedListing, pageNumber } = this.state;
+  fetchData = (after = undefined) => {
+    const { selectedListing } = this.state;
 
     let url = !after
       ? `https://www.reddit.com/r/reactjs/${selectedListing.toLowerCase()}.json`
@@ -24,24 +24,31 @@ class App extends Component {
 
     fetch(url)
       .then((result) => result.json())
-      .then((result) =>
-        this.setState({
-          posts: result.data.children,
-          after: result.data.after,
-          pageNumber: pageNumber + 1,
-        })
-      )
-      .then(() =>
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-        }, 400)
-      )
+      .then((result) => this.setPostsData(result))
+      .then(() => this.increasePageNumber())
       .catch((error) => alert(error));
+  };
+
+  setPostsData = (data) => {
+    this.setState(
+      { posts: data.data.children, after: data.data.after },
+      this.delayAndScrollToTop()
+    );
+  };
+
+  increasePageNumber = () => {
+    this.setState({ pageNumber: this.state.pageNumber + 1 });
+  };
+
+  delayAndScrollToTop = () => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 400);
   };
 
   setListing = (newListing) => {
     this.setState({ selectedListing: newListing, pageNumber: 0 }, () =>
-      this.fetchPosts()
+      this.fetchData()
     );
   };
 
@@ -61,7 +68,7 @@ class App extends Component {
         state={this.state}
         changeTheme={this.changeTheme}
         setListing={this.setListing}
-        fetchPosts={this.fetchPosts}
+        fetchData={this.fetchData}
       />
     );
   }
