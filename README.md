@@ -36,9 +36,9 @@ Acesse Reddact em: https://redd-act.netlify.app/
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-- [React](https://pt-br.reactjs.org/)
-- [Tailwind](https://tailwindcss.com/)
-- [TimeAgo](https://timeago.org/)
+- [React.js](https://pt-br.reactjs.org/)
+- [Tailwind.css](https://tailwindcss.com/)
+- [TimeAgo.js](https://timeago.org/)
 
 ## Funcionalidades
 
