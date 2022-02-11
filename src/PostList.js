@@ -35,6 +35,7 @@ const PostList = (props) => {
         isFixed={post.data.stickied}
         comments={post.data.num_comments}
         ups={post.data.ups - 1}
+        awards={post.data.total_awards_received}
       />
     );
   });
@@ -57,6 +58,7 @@ const Post = (props) => {
           isFixed={props.isFixed}
           comments={props.comments}
           ups={props.ups}
+          awards={props.awards}
         />
       </div>
     </div>
@@ -104,7 +106,11 @@ const PostText = (props) => {
         </a>
       </p>
 
-      <PostStats comments={props.comments} ups={props.ups} />
+      <PostStats
+        comments={props.comments}
+        ups={props.ups}
+        awards={props.awards}
+      />
     </div>
   );
 };
@@ -120,8 +126,9 @@ const PostBadge = (props) => {
 const PostStats = (props) => {
   return (
     <div className="mt-[.2rem] text-xs">
-      <Stat title="ups" score={props.ups} />
-      <Stat title="comentários" score={props.comments} />
+      {props.awards >= 1 && <Stat title="Prêmios" score={props.awards} />}
+      <Stat title="Ups" score={props.ups} />
+      <Stat title="Comentários" score={props.comments} />
     </div>
   );
 };
@@ -129,7 +136,7 @@ const PostStats = (props) => {
 const Stat = (props) => {
   return (
     <div className="inline-block mr-3 text-gray-600 dark:text-gray-500">
-      {props.title}: {props.score}
+      {props.score} {props.title}
     </div>
   );
 };
