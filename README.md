@@ -45,8 +45,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [x] Botões para navegar entre os tipos de listagem de posts: Hot, New, Top e Rising.
 - [x] Botão "Ver mais" para carregar uma nova página de posts.
 - [x] Mostrar há quanto tempo atrás o post foi feito e o usuário que o fez, com link para o post e para o perfil do usuário.
-- [x] Mostrar a imagem do post se ele tiver uma, ou uma imagem padrão caso contrário.
-- [x] Se o post tiver uma imagem, aumentar o tamanho da mesma ao clicar nela e voltá-la ao normal ao clicar de novo.
+- [x] Mostrar a imagem do post se ele tiver uma e clicar para aumentar/diminuir o tamanho dela, ou uma imagem padrão caso contrário.
 - [x] Mostrar o número da página.
 - [x] Dark/Light mode.
 - [x] Projeto rodando no [Netlify](https://netlify.com) com deploy automático (https://redd-act.netlify.app/) [![Netlify Status](https://api.netlify.com/api/v1/badges/3a34b761-eb9c-4abc-aab6-3740bf78aecd/deploy-status)](https://app.netlify.com/sites/redd-act/deploys).
