@@ -26,7 +26,7 @@ class App extends Component {
       .then((result) => result.json())
       .then((result) => this.setPostsData(result))
       .then(() => this.increasePageNumber())
-      .catch((error) => alert(error));
+      .catch((error) => console.log(error));
   };
 
   setPostsData = (data) => {
