@@ -22,7 +22,9 @@ Acesse Reddact em: https://redd-act.netlify.app/
   • 
 	<a href="#funcionalidades">Funcionalidades</a> 
   • 
-	<a href="#executar-a-aplicação">Executar a aplicação</a> 
+  <a href="#roteiro">Roteiro</a> 
+  •
+	<a href="#executar-a-aplicação-em-modo-de-desenvolvimento">Executar a aplicação</a> 
   • 
 	<a href="#licença">Licença</a> 
   • 
@@ -32,7 +34,7 @@ Acesse Reddact em: https://redd-act.netlify.app/
   •
 </p>
 
-## Tecnologias
+# Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
@@ -40,7 +42,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Tailwind.css](https://tailwindcss.com/)
 - [TimeAgo.js](https://timeago.org/)
 
-## Funcionalidades
+# Funcionalidades
 
 - [x] Botões para navegar entre os tipos de listagem de posts: Hot, New, Top e Rising.
 - [x] Botão "Ver mais" para carregar uma nova página de posts.
@@ -51,13 +53,24 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [x] Projeto rodando no [Netlify](https://netlify.com) com deploy automático (https://redd-act.netlify.app/) [![Netlify Status](https://api.netlify.com/api/v1/badges/3a34b761-eb9c-4abc-aab6-3740bf78aecd/deploy-status)](https://app.netlify.com/sites/redd-act/deploys).
 - [x] Mostrar a devida badge em posts que são uma coleção ou que foram fixados.
 - [x] Mostrar número de prêmios, de upvotes e de comentários no post.
-- [ ] Testes unitários.
-- [ ] Testes e2e.
-- [ ] Documentação.
 
-## Executar a aplicação
+# Roteiro
 
-### Pré-requisitos
+Aqui estão as próximas etapas desse projeto e o que está sendo feito agora:
+
+- [ ] <img src="https://img.shields.io/badge/-%F0%9F%91%B7%20em%20andamento-%236324C6" alt="Status"/> Re-escrever Class Components como Hooks
+- [ ] Aprender sobre os padrões do React e refatorar o projeto implementando-os (Responsabilidade Única, Imutabilidade, Composição, Reatividade)
+  - [x] Responsabilidade Única
+  - [ ] Imutabilidade
+  - [ ] Composição
+  - [ ] Reatividade
+- [ ] Implementar testes Unitários
+- [ ] Implementar testes e2e
+- [ ] Escrever Documentação
+
+# Executar a aplicação em modo de Desenvolvimento
+
+## Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
@@ -68,13 +81,13 @@ Além disto é bom ter um editor decente para trabalhar com o código. Eu recome
 
 E um pequeno adendo: se você está usando o Google Chrome, talvez você precise ativar o modo de rolagem suave (visitando chrome://flags/#smooth-scrolling) para uma melhor experiência no app.
 
-### Executando a aplicação em modo de desenvolvimento
+## Executando a aplicação
 
 Para executar a aplicação em sua máquina, siga os seguintes passos:
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/codigoisaac/reddact>
+$ git clone https://github.com/codigoisaac/reddact
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd reddact
@@ -85,18 +98,18 @@ $ npm install
 # Execute a aplicação em modo de desenvolvimento
 $ npm start
 
-# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+# O servidor inciará na porta:3000 - acesse http://localhost:3000
 ```
 
-## Licença
+# Licença
 
 [The Unlicense](https://choosealicense.com/licenses/unlicense/)
 
-## Autor
+# Autor
 
 [Isaac Muniz](https://campsite.bio/codigoisaac)
 
-## Contribuindo
+# Contribuindo
 
 Pull requests são bem vindos. ;)
 Para grandes alterações por favor abra um _issue_ antes para discutirmos o que você quer fazer.
