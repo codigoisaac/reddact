@@ -14,7 +14,10 @@ const PostText = (props) => {
         stickied={postData.stickied}
       />
 
-      <PostTitle url={postData.url} title={postData.title} />
+      <PostTitle
+        url={"https://reddit.com" + postData.permalink}
+        title={postData.title}
+      />
 
       <PostAuthor timestamp={postData.created_utc} author={postData.author} />
 
